@@ -1,3 +1,4 @@
+using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -32,16 +33,49 @@ namespace PriceListGenerator.ViewModel
             ////}
         }
 
+        #region Fields
 
-        private RelayCommand _showAddPriceView;
+        /// <summary>
+        /// Индекс активного таба
+        /// </summary>
+        private int _selectedTabIndex;
 
-        public RelayCommand ShowAddPriceView
-            => _showAddPriceView ?? (_showAddPriceView = new RelayCommand(ShowAddPriceViewExecute));
+        #endregion
 
-        private void ShowAddPriceViewExecute()
+        #region Properties
+
+        /// <summary>
+        /// Если первый таб - "назад" видимая, иначе - скрыть
+        /// </summary>
+        public Visibility BackBtnVisibility => SelectedTabIndex == 0 ? Visibility.Collapsed : Visibility.Visible;
+
+        /// <summary>
+        /// Индекс активного таба
+        /// </summary>
+        public int SelectedTabIndex
         {
-            
+            get { return _selectedTabIndex; }
+            set
+            {
+                _selectedTabIndex = value;
+                RaisePropertyChanged();
+                RaisePropertyChanged("BackBtnVisibility");
+            }
         }
+        #endregion
 
+        #region Commands
+        /// <summary>
+        /// Переключение между табами
+        /// </summary>
+        public RelayCommand TabSwitch
+            => _tabSwitch ?? (_tabSwitch = new RelayCommand(TabSwitchExecute));
+        private RelayCommand _tabSwitch;
+
+        private void TabSwitchExecute()
+        {
+            SelectedTabIndex = SelectedTabIndex == 0 ? 1 : 0;
+        }
+        #endregion
     }
 }

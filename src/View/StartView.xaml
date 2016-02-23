@@ -15,13 +15,21 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
-        <controls:MetroTabControl Margin="0,-6">
+        <controls:MetroTabControl Margin="0,-6"
+                                  Name="PriceTbaControl"
+                                  SelectedIndex="{Binding SelectedTabIndex}">
             <controls:MetroTabItem>
                 <GroupBox Margin="-1"
                           Header="Прайс-лист">
                     <ListBox>
 
                     </ListBox>
+                </GroupBox>
+            </controls:MetroTabItem>
+            <controls:MetroTabItem>
+                <GroupBox Margin="-1"
+                          Header="Добавление">
+                    <TextBox Text="123"></TextBox>
                 </GroupBox>
             </controls:MetroTabItem>
         </controls:MetroTabControl>
@@ -32,7 +40,8 @@
             <Grid>
                 <StackPanel>
                     <Button ToolTip="Открыть окно добавления 'ценника'"
-                        Style="{StaticResource ButtonStyle}">
+                            Style="{StaticResource ButtonStyle}"
+                            Command="{Binding TabSwitch}">
                         <StackPanel Orientation="Horizontal">
                             <Rectangle Width="10"
                                    Height="10"
@@ -63,7 +72,9 @@
                         </StackPanel>
                     </Button>
                     <Button ToolTip="Вернуться на главное меню"
-                        Style="{StaticResource ButtonStyle}">
+                            Style="{StaticResource ButtonStyle}"
+                            Visibility="{Binding BackBtnVisibility}"
+                            Command="{Binding TabSwitch}">
                         <StackPanel Orientation="Horizontal">
                             <Rectangle Width="10"
                                    Height="10"
