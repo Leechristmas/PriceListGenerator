@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace PriceListGenerator.ViewModel
 {
@@ -14,7 +15,7 @@ namespace PriceListGenerator.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class StartViewModel : ViewModelBase
+    public class StartViewModel : WindowViewModelBase
     {
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -30,5 +31,17 @@ namespace PriceListGenerator.ViewModel
             ////    // Code runs "for real"
             ////}
         }
+
+
+        private RelayCommand _showAddPriceView;
+
+        public RelayCommand ShowAddPriceView
+            => _showAddPriceView ?? (_showAddPriceView = new RelayCommand(ShowAddPriceViewExecute));
+
+        private void ShowAddPriceViewExecute()
+        {
+            
+        }
+
     }
 }
