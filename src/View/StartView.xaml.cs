@@ -12,15 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
-namespace PriceListGenerator
+namespace PriceListGenerator.View
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StartView : MetroWindow
     {
-        public MainWindow()
+        public StartView()
         {
             InitializeComponent();
         }
