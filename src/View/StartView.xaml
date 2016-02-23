@@ -5,9 +5,96 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:local="clr-namespace:PriceListGenerator.View"
                     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:helpers="clr-namespace:PriceListGenerator.Helpers"
                     mc:Ignorable="d"
-                    Title="MainWindow" Height="350" Width="525">
+                    Title="Price-list generator" Height="350" Width="525"
+                    helpers:WindowCloseHelper.WindowsClose="{Binding WindowsClosed}">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <controls:MetroTabControl Margin="0,-6">
+            <controls:MetroTabItem>
+                <GroupBox Margin="-1"
+                          Header="Прайс-лист">
+                    <ListBox>
+
+                    </ListBox>
+                </GroupBox>
+            </controls:MetroTabItem>
+        </controls:MetroTabControl>
+
+        <GroupBox Header="Меню"
+                  Grid.Column="1"
+                  Margin="-1">
+            <Grid>
+                <StackPanel>
+                    <Button ToolTip="Открыть окно добавления 'ценника'"
+                        Style="{StaticResource ButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="10"
+                                   Height="10"
+                                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_add}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <TextBlock Text="Добавить" 
+                                   FontSize="16"
+                                   Margin="5,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button ToolTip="Сформировать документ, содержащий прайс-лист"
+                            Style="{StaticResource ButtonStyle}"
+                            Margin="0,5">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="10"
+                                   Height="10"
+                                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_book_open_text}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <TextBlock Text="Документ" 
+                                   FontSize="16"
+                                   Margin="5,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button ToolTip="Вернуться на главное меню"
+                        Style="{StaticResource ButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="10"
+                                   Height="10"
+                                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_arrow_left}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <TextBlock Text="Назад" 
+                                   FontSize="16"
+                                   Margin="5,0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <Button ToolTip="Закрыть"
+                        Style="{StaticResource ButtonStyle}"
+                        Height="25"
+                        VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="10"
+                                   Height="10"
+                                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_close}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock Text="Закрыть" 
+                                   FontSize="16"
+                                   Margin="5,0"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </GroupBox>
     </Grid>
 </controls:MetroWindow>

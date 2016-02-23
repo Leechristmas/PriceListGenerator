@@ -42,14 +42,14 @@ namespace PriceListGenerator.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<StartViewModel>();
         }
 
-        public MainViewModel Main
+        public StartViewModel Main
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<StartViewModel>();
             }
         }
         
